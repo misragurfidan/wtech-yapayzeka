@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ff007b;; /* Düz pembe arka plan rengi */
+            color: white; /* Metin rengi */
+        }
+        .container {
+            max-width: 600px; /* Formun maksimum genişliği */
+            margin: auto; /* Ortalanması */
+            background-color: rgba(0, 0, 0, 0.7); /* Form arka planının opaklığı */
+            padding: 20px; /* Form içeriği arasındaki boşluk */
+            border-radius: 10px; /* Kenar yuvarlaklığı */
+        }
+        h2, h3 {
+            color: white;
+            text-align: center; /* Başlık hizalaması */
+        }
+        input[type="file"] {
+            color: white; /* Dosya yükleme metni rengi */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2>About MINST</h2>
+    <p>The MINST dataset is a dataset consisting of 60,000 color images belonging to 10 different classes. Each class contains 6,000 images. Classes include airplane, automobile, bird, cat, deer, dog, frog, horse, ship, and truck.</p>
+    <h2>Convolutional Neural Network (CNN) Model on MINST</h2>
+    <ul>
+        <li>
+            <strong>Description of Model Architecture:</strong>
+            <ul>
+                <li><strong>Input Layer:</strong> The shape is defined for images of size 32x32 pixels with 3 channels (RGB).</li>
+                <li><strong>Convolutional Layers:</strong> Two convolutional layers (`Conv2D`) are used. Each is followed by a ReLU activation function and then a batch normalization layer (`BatchNormalization`). Following the convolutional layers are max-pooling layers (`MaxPooling2D`).</li>
+                <li><strong>Dropout:</strong> Dropout is a technique used to mitigate overfitting. Overfitting occurs when a model becomes overly tuned to the training data and fails to generalize well. Dropout involves randomly deactivating a portion of units (e.g., 50%) during each training step, thereby randomly reducing the strength of connections in the neural network. This encourages the model to learn different features and facilitates better generalization..</li>
+                <li><strong>Dense Layers:</strong> The outputs of the convolutional layers are flattened, and then two dense layers (`Dense`) follow. Each is accompanied by a ReLU activation function. Additionally, dropout layers (`Dropout`) are used to prevent overfitting.</li>
+                <li><strong>Output Layer:</strong> It is a fully connected layer with a `softmax` activation function, defining the 10 classes. This layer predicts which class the given image belongs to.</li>
+                <li><strong>Output Layer:</strong> It is a fully connected layer with a `softmax` activation function, defining the 10 classes. This layer predicts which class the given image belongs to.</li>
+            </ul>
+        </li>
+            <strong>Model Architecture:</strong>
+            <p> Input Layer:
+                The input layer is shaped for images of size 28x28 pixels with a single channel (grayscale).
+                The Conv2D layer performs convolution on the input images using 32 filters of size 3x3.
+                Subsequently, the MaxPooling2D layer performs 2x2 max-pooling, reducing the size of the image by half.
+                The BatchNormalization layer normalizes input values during each learning cycle, facilitating faster and more stable learning.
+                The Dropout layer randomly disables units with a 50% probability at each training step, reducing overfitting.
+                Additional Convolutional Layers:
+                Similarly, a series of additional convolutional layers follow the first convolutional layer.
+                These layers also include ReLU activation function, batch normalization, and dropout layers.
+                Dense Layers:
+                The outputs of the convolutional layers are flattened (Flatten).
+                Then two fully connected (dense) layers (Dense) follow. Each is accompanied by a ReLU activation function.
+                Dropout layers are used after each dense layer to reduce overfitting.
+                Output Layer:
+                Finally, an output layer is present. This layer has a softmax activation function that defines the 10 classes.
+                The model uses this output layer to predict which class the given image belongs to.</p>
+        </li>
+        <li>
+            <strong>Training the Model:</strong>
+            <p>The model is compiled using the `categorical_crossentropy` loss function and the `Adam` optimizer. The model is trained for 50 epochs on the training and validation datasets.</p>
+        </li>
+        <li>
+            <strong>Training Results:</strong>
+            <p>Throughout the training process, the accuracy metric of the model increases over time, achieving successful results on the validation dataset. At the end of training, the model can be evaluated on the test dataset to assess its performance.</p>
+        </li>
+    </ul>
+</div>
+
+</head>
+    <div style="text-align: center;">
+    <h2 style="color: white;">Model Accuracy Graph</h2>
+    <a href="https://imgbb.com/"><img src="https://i.ibb.co/mTsHtgY/graph.png" alt="graph" border="0"></a>
+</body>
+    </div>
+</body>
+        <h3>UPLOAD AND IMAGE(Supporting File Types: JPEG, PNG, BMP)</h3>
+        <form action="/predict/" enctype="multipart/form-data" method="post">
+            <input name="file" type="file" class="form-control mb-2"> <!-- Dosya yükleme alanı -->
+            <button type="submit" class="btn btn-primary">Submit</button> <!-- Gönderme düğmesi -->
+        </form>
+        <title>Trained Model Accuracy Graph</title>
+
+</html>
